@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register New Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <div class="register-box">
+            <form action="register.php" method="post" onsubmit="return validateForm()">
+                <h2>Register New Account</h2>
+                <div class="form-row">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <input type="text" name="full_name" required>
+                        <label>Full Name</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
+                        <input type="tel" id="phone" name="phone_number" required oninput="validateNumber(this)">
+                        <label>Phone Number</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <input type="text" name="present_address" required>
+                        <label>Present Address</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <input type="text" name="permanent_address" required>
+                        <label>Permanent Address</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
+                        <input type="text" name="birth_id" id="birthId" required oninput="validateNumber(this)">
+                        <label>Birth ID</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
+                        <input type="date" name="birth_date" required>
+                        <p>Birth Date</p>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="hourglass-outline"></ion-icon></span>
+                        <input type="number" name="age" id="age" required>
+                        <label>Age</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <input type="text" name="fathers_name" required>
+                        <label>Father's Name</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <input type="text" name="mothers_name" required>
+                        <label>Mother's Name</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="heart-outline"></ion-icon></span>
+                        <select name="marital_status" required>
+                            <option value="unmarried">Unmarried</option>
+                            <option value="married">Married</option>
+                        </select>
+                        <label>Marital Status</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                        <input type="password" name="password" id="password" required>
+                        <label>Password</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                        <input type="password" id="confirmPassword" required>
+                        <label>Confirm Password</label>
+                    </div>
+                </div>
+                <button type="submit">Confirm</button>
+                <div class="login-link">
+                    <p>Already have an account?<a href="index.html"> Login</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        function validateForm() {
+            var age = document.getElementById('age').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (age < 18) {
+                alert("Age must be 18 or above.");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateNumber(input) {
+            input.value = input.value.replace(/[^0-9]/g, '');
+        }
+    </script>
+</body>
+</html>
